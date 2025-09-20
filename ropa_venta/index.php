@@ -17,7 +17,7 @@ session_start();
       <a href="../perfil/index.php">Mi Perfil</a>
       <div class="dropdown-content">
         <a href="../reportes/index.php">Reportes</a>
-        <a href="#">Soporte Técnico</a>
+        <a href="../soporte_tecnico/index.php">Soporte Técnico</a>
       </div>
     </div>
     <a href="../promociones/index.php">Promociones</a>
@@ -41,7 +41,7 @@ session_start();
       <div class="filtros-menu">
         <button data-filtro="todos">Todos</button>
 
-        <!-- Nuevos filtros basados en la estructura actualizada -->
+
         <div class="submenu">
           <span>ESCRITURA Y DIBUJO</span>
           <button data-filtro="Bolígrafos y Esferos">Bolígrafos y Esferos</button>
@@ -67,6 +67,7 @@ session_start();
           <button data-filtro="Cartón Paja">Cartón Paja</button>
           <button data-filtro="Papeles Especiales">Papeles Especiales</button>
         </div>
+
 
 
       </div>
