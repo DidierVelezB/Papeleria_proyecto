@@ -5,11 +5,11 @@ document.querySelectorAll('.btn-add').forEach(btn => {
             id: btn.dataset.id,
             nombre: btn.dataset.nombre,
             precio: parseInt(btn.dataset.precio),
-            // Nota: Ya no existe el campo "talla", se reemplaza por "marca"
             marca: contenedorProducto.querySelector('p:nth-child(5)').innerText.split(': ')[1],
             imagen: contenedorProducto.querySelector('.img-placeholder img').getAttribute('src'),
             categoria: contenedorProducto.dataset.categoria,
-            subcategoria: contenedorProducto.dataset.subcategoria
+            subcategoria: contenedorProducto.dataset.subcategoria,
+            cantidad: 1 //campo cantidad
         };
 
         let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -32,21 +32,24 @@ document.querySelectorAll('.btn-add').forEach(btn => {
             setTimeout(() => mensaje.classList.remove('mostrar'), 2000);
         }
         
-        if (!existe) {
+        const index = carrito.findIndex(item => item.id.toString() === producto.id.toString());
+
+        if (index === -1) {
             carrito.push(producto);
-            localStorage.setItem('carrito', JSON.stringify(carrito));
-            actualizarContador();
-            mostrarMensaje('✅ Producto añadido al carrito');
         } else {
-            mostrarMensaje('⚠️ Este producto ya está en el carrito');
+            carrito[index].cantidad += 1;
         }
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        actualizarContador();
+        mostrarMensaje('Producto añadido al carrito exitosamente');
     });
 });
 
 function actualizarContador() {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    const totalUnidades = carrito.reduce((sum, item) => sum + (item.cantidad || 0), 0);
     document.querySelectorAll('#contador-carrito').forEach(element => {
-        element.textContent = carrito.length;
+        element.textContent = totalUnidades;
     });
 }
 

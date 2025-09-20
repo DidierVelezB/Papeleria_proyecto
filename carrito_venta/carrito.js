@@ -1,10 +1,4 @@
-// Lista de imágenes del mismo producto (diferentes ángulos)
-const imagenesProducto = [
-    { imagen: "../img/Camisa1.webp" },
-    { imagen: "../img/Camisa2.jpg" },
-    { imagen: "../img/Camisa3.jpg" }
-];
-// Esto es para evitar que el usuario arrastre las imágenes y las suelte en otro lugar
+// Evitar que las imágenes sean arrastrables
 document.querySelectorAll('img').forEach(img => {
   img.addEventListener('dragstart', event => {
     event.preventDefault();
@@ -36,19 +30,37 @@ function cargarCarrito() {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     const contenedor = document.getElementById('contenedor-productos');
     
-    contenedor.innerHTML = carrito.map((producto, index) => `
-        <div class="item-carrito">
-            <img src="${producto.imagen}" alt="${producto.nombre}"/>
-            <div class="info-producto">
-                <h3>${producto.nombre}</h3>
-                <p>Talla: ${producto.talla}</p>
-                <p class="precio">$${producto.precio.toLocaleString()}</p>
-                <button class="btn-eliminar" data-id="${producto.id}">Eliminar</button>
-            </div>
+    contenedor.innerHTML = carrito.map((producto) => `
+    <div class="item-carrito">
+        <img src="${producto.imagen}" alt="${producto.nombre}"/>
+        <div class="info-producto">
+            <h3>${producto.nombre}</h3>
+            <p class="cantidad-container">
+                <button class="btn-cantidad btn-menos" data-id="${producto.id}">−</button>
+                <span class="cantidad-num">${producto.cantidad}</span>
+                <button class="btn-cantidad btn-mas" data-id="${producto.id}">+</button>
+            </p>
+            <p class="precio">$${(producto.precio * producto.cantidad).toLocaleString()}</p>
+            <button class="btn-eliminar" data-id="${producto.id}">Eliminar</button>
         </div>
-    `).join(''); 
+    </div>
+`).join('');
+    // Listeners de cantidad
+    document.querySelectorAll('.btn-mas').forEach(btn => {
+        btn.addEventListener('click', () => cambiarCantidad(btn.dataset.id, +1));
+    });
 
-    // Añade los listeners para los botones de eliminar
+    document.querySelectorAll('.btn-menos').forEach(btn => {
+        btn.addEventListener('click', () => cambiarCantidad(btn.dataset.id, -1));
+    });
+
+    // Listeners de eliminar
+    document.querySelectorAll('.btn-eliminar').forEach(btn => {
+        btn.addEventListener('click', eliminarProducto);
+    });
+
+
+    // Listener de eliminar (repetido para asegurar funcionalidad tras recarga)
     document.querySelectorAll('.btn-eliminar').forEach(btn => {
         btn.addEventListener('click', eliminarProducto);
     });
@@ -65,14 +77,33 @@ function eliminarProducto(e) {
     actualizarTotales();
     actualizarContador();
 }
+function cambiarCantidad(id, delta) {
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    carrito = carrito.map(producto => {
+        if (producto.id.toString() === id.toString()) {
+            producto.cantidad = Math.max(1, (producto.cantidad || 1) + delta);
+        }
+        return producto;
+    });
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    cargarCarrito();      
+    actualizarTotales(); 
+    actualizarContador();
+}
+
 
 function actualizarTotales() {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    const subtotal = carrito.reduce((sum, producto) => sum + producto.precio, 0);
+    const subtotal = carrito.reduce((sum, producto) => 
+        sum + (producto.precio * (producto.cantidad || 1)), 0
+    );
     
     document.getElementById('subtotal').textContent = subtotal.toLocaleString();
     document.getElementById('total').textContent = subtotal.toLocaleString();
-    document.getElementById('contador-carrito').textContent = carrito.length;
+
+    // contador = suma de todas las unidades
+    const totalUnidades = carrito.reduce((sum, producto) => sum + (producto.cantidad || 0), 0);
+    document.getElementById('contador-carrito').textContent = totalUnidades;
 }
 
 // Modificar función aplicarDescuento para trabajar con el total
@@ -171,8 +202,8 @@ function agregarAlCarrito() {
     const producto = {
         id: Date.now().toString(),
         nombre: document.querySelector(".datos h2")?.textContent.trim() || "Producto sin nombre",
-        talla: document.querySelector("select[name='talla']")?.value || "Única",
-        precio: precioProducto,
+        precio: precioProducto, // Precio fijo
+        cantidad: 1,
         imagen: imagenesProducto[indiceActual].imagen
     };
 

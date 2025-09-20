@@ -107,10 +107,11 @@ session_start();
                       <p>Marca: '.htmlspecialchars($row['marca']).'</p>
                       <p>Presentación: '.htmlspecialchars($row['presentacion']).'</p>
                       <p class="precio">$'.number_format($row['precio'], 0, ",", ".").'</p>
-                      <button class="btn-add" 
-                              data-id="'.$row['id'].'" 
-                              data-nombre="'.$row['nombre'].'" 
-                              data-precio="'.$row['precio'].'">Añadir al carrito</button>
+                      <button class="btn-add"
+                          data-id="'.$row['id'].'"
+                          data-nombre="'.htmlspecialchars($row['nombre'], ENT_QUOTES).'"
+                          data-precio="'.$row['precio'].'"
+                          data-imagen="'.$imgPath.'">Añadir al carrito </button>
                     </div>
                   </div>
                   ';
