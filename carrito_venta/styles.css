@@ -103,6 +103,11 @@ h1 {
     color: #00b5b5;
     font-weight: bold;
 }
+.info-producto .descripcion {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 4px 0;
+}
 
 /* Botón eliminar */
 .btn-eliminar {
@@ -291,6 +296,17 @@ h1 {
     font-size: 1.8em;
     font-weight: bold;
     color: #00b5b5;
+}
+.precio-unitario {
+  font-size: 0.9rem;
+  color: #666; /* un gris suave */
+}
+
+.precio-total {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #009a9a; /* el color principal de tu paleta */
+  margin-top: 5px;
 }
 
 .icono-dinero {

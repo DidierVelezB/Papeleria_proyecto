@@ -1,14 +1,18 @@
 document.querySelectorAll('.btn-add').forEach(btn => {
     btn.addEventListener('click', () => {
+        
         const contenedorProducto = btn.closest('.producto');
         const producto = {
             id: btn.dataset.id,
             nombre: btn.dataset.nombre,
             precio: parseInt(btn.dataset.precio),
-            marca: contenedorProducto.querySelector('p:nth-child(5)').innerText.split(': ')[1],
-            imagen: contenedorProducto.querySelector('.img-placeholder img').getAttribute('src'),
+            tipo: btn.dataset.tipo,
+            marca: btn.dataset.marca,             
+            imagen: btn.dataset.imagen,
             categoria: contenedorProducto.dataset.categoria,
             subcategoria: contenedorProducto.dataset.subcategoria,
+            presentacion: btn.dataset.presentacion,
+            descripcion: btn.dataset.descripcion,
             cantidad: 1 //campo cantidad
         };
 

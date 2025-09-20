@@ -1,3 +1,5 @@
+
+
 // Evitar que las imágenes sean arrastrables
 document.querySelectorAll('img').forEach(img => {
   img.addEventListener('dragstart', event => {
@@ -35,12 +37,16 @@ function cargarCarrito() {
         <img src="${producto.imagen}" alt="${producto.nombre}"/>
         <div class="info-producto">
             <h3>${producto.nombre}</h3>
+            <p class="descripcion">${producto.descripcion || "Sin descripción disponible"}</p>
+            <p><strong>Tipo:</strong> ${producto.tipo || "-"}</p>
+            <p><strong>Marca:</strong> ${producto.marca || "-"}</p>
+            <p><strong>Presentación:</strong> ${producto.presentacion || "-"}</p>
             <p class="cantidad-container">
                 <button class="btn-cantidad btn-menos" data-id="${producto.id}">−</button>
                 <span class="cantidad-num">${producto.cantidad}</span>
                 <button class="btn-cantidad btn-mas" data-id="${producto.id}">+</button>
             </p>
-            <p class="precio">$${(producto.precio * producto.cantidad).toLocaleString()}</p>
+            <p class="precio-total">$${(producto.precio * producto.cantidad).toLocaleString()}</p>
             <button class="btn-eliminar" data-id="${producto.id}">Eliminar</button>
         </div>
     </div>
