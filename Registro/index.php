@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,28 +6,28 @@ session_start();
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="wrapper">
-    <div class="card">
-      <div class="left-panel">
-        <img src="../img/logo.png" alt="Logotipo IA" class="logo-img">
-      </div>
-      <div class="right-panel">
-        <form action="register.php" method="post">
-          <div class="field-single">
-            <label for="usuario">NOMBRE</label>
-            <input type="text" id="usuario" name="usuario" required>
-          </div>
-          <div class="field-single">
-            <label for="correo">CORREO</label>
-            <input type="email" id="correo" name="correo" required>
-          </div>
-          <div class="field-single">
-            <label for="contrasena">CONTRASEÑA</label>
-            <input type="password" id="contrasena" name="contrasena" required>
-          </div>
-          <button type="submit" class="btn">REGISTRAR</button>
-        </form>
-      </div>
+  <div class="register-container">
+    <div class="register-card">
+      <h2>Registro de Usuario</h2>
+      <form action="register.php" method="post">
+        <div class="form-group">
+          <label for="usuario">Nombre:</label>
+          <input type="text" id="usuario" name="usuario" placeholder="Ingresa tu nombre" required>
+        </div>
+
+        <div class="form-group">
+          <label for="correo">Correo:</label>
+          <input type="email" id="correo" name="correo" placeholder="Ingresa tu correo" required>
+        </div>
+
+        <div class="form-group">
+          <label for="contrasena">Contraseña:</label>
+          <input type="password" id="contrasena" name="contrasena" placeholder="Crea una contraseña" required>
+        </div>
+
+        <button type="submit" class="btn">REGISTRAR</button>
+        <button type="button" class="btn volver" onclick="window.location.href='../index.php'">VOLVER</button>
+      </form>
     </div>
   </div>
 </body>

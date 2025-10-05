@@ -99,25 +99,30 @@ session_start();
                           alt="'.htmlspecialchars($row['nombre']).'" 
                           style="width: 200px; height: 200px; object-fit: cover;">
                     </div>
-                      <div class="info">
-                        <h3>'.htmlspecialchars($row['nombre']).'</h3>
-                        <p>'.htmlspecialchars($row['descripcion']).'</p>
-                        <p>Tipo: '.htmlspecialchars($row['tipo']).'</p>
-                        <p>Marca: '.htmlspecialchars($row['marca']).'</p>
-                        <p>Cantidad: '.htmlspecialchars($row['presentacion']).'</p>
-                        <p class="precio">$'.number_format($row['precio'], 0, ",", ".").'</p>
-                        <button class="btn-add"
-                            data-id="'.$row['id'].'"
-                            data-nombre="'.htmlspecialchars($row['nombre'], ENT_QUOTES).'"
-                            data-descripcion="'.htmlspecialchars($row['descripcion'], ENT_QUOTES).'"
-                            data-precio="'.$row['precio'].'"
-                            data-tipo="'.htmlspecialchars($row['tipo'], ENT_QUOTES).'"
-                            data-marca="'.htmlspecialchars($row['marca'], ENT_QUOTES).'"
-                            data-presentacion="'.htmlspecialchars($row['presentacion'], ENT_QUOTES).'"
-                            data-imagen="'.$imgPath.'">Añadir al carrito</button>
+
+                    <div class="info">
+                      <h3>'.htmlspecialchars($row['nombre']).'</h3>
+
+                      <div class="detalle-cantidad">
+                        <span class="texto-cantidad">'.htmlspecialchars($row['presentacion']).'</span>
                       </div>
+
+                      <p class="precio">$'.number_format($row['precio'], 0, ",", ".").'</p>
+
+                      <button class="btn-add"
+                          data-id="'.$row['id'].'"
+                          data-nombre="'.htmlspecialchars($row['nombre'], ENT_QUOTES).'"
+                          data-descripcion="'.htmlspecialchars($row['descripcion'], ENT_QUOTES).'"
+                          data-precio="'.$row['precio'].'"
+                          data-tipo="'.htmlspecialchars($row['tipo'], ENT_QUOTES).'"
+                          data-marca="'.htmlspecialchars($row['marca'], ENT_QUOTES).'"
+                          data-presentacion="'.htmlspecialchars($row['presentacion'], ENT_QUOTES).'"
+                          data-imagen="'.$imgPath.'">
+                          Añadir al carrito
+                      </button>
                     </div>
-                  ';
+                  </div>
+                ';
             }
         } else {
             echo "<p>No hay productos disponibles.</p>";

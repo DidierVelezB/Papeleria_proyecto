@@ -359,3 +359,41 @@ main {
 .pagina-btn.active:hover {
   background-color: #002d2b; 
 }
+/* ==== Tarjeta de producto refinada ==== */
+
+.info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+  color: #002d2b;
+  font-weight: bold;
+}
+
+.detalle-cantidad {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: #555;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 0.3rem 0.6rem;
+  width: fit-content;
+  margin: 0 auto 0.5rem auto;
+  transition: background-color 0.3s ease;
+}
+
+.detalle-cantidad:hover {
+  background-color: #e0f7f5;
+}
+
+.icono-caja {
+  font-size: 1rem;
+}
+
+.precio {
+  color: #00b5b5;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 0.4rem;
+}
