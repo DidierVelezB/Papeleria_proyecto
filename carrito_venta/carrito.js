@@ -164,43 +164,44 @@ function actualizarContador() {
 }
 
 
-// Procesar pago
+// Procesar pago con Stripe
 async function procesarPago() {
-    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-    if (carrito.length === 0) {
-        alert("Tu carrito está vacío.");
-        return;
-    }
-    if (!usuarioID) {
-        alert("Debes iniciar sesión para procesar el pago.");
-        return;
-    }
+  if (carrito.length === 0) {
+    alert("Tu carrito está vacío.");
+    return;
+  }
 
-    try {
-        const response = await fetch('guardar_historial.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                id_cliente: usuarioID, 
-                productos: carrito
-            })
-        });
+  // Calcular total en COP
+  const total = carrito.reduce((sum, producto) =>
+    sum + (producto.precio * (producto.cantidad || 1)), 0
+  );
 
-        const data = await response.json();
-        if (data.success) {
-            alert("Compra guardada en historial correctamente.");
-            localStorage.removeItem('carrito');
-            actualizarContador();
-            window.location.reload();
-        } else {
-            alert("Error al guardar el historial: " + data.error);
-        }
-    } catch (error) {
-        console.error("Error:", error);
-        alert("Error al procesar el pago.");
+  try {
+    const response = await fetch("../pagos/create_checkout.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ total }),
+    });
+
+    const session = await response.json();
+
+    if (session.id) {
+      const stripe = Stripe("pk_test_51SIcarR3GZGsYtdhekumiTFhOoSNAoCwGAUpvVuWOIUr2JOByqqIsancamwpih7c3e2tXZvgqHgJbTif3dAvXFTe000hDq6nd5");
+      await stripe.redirectToCheckout({ sessionId: session.id });
+    } else {
+      alert("Error al crear la sesión de pago: " + (session.error || "Desconocido"));
+      console.error(session);
     }
+  } catch (error) {
+    console.error("Error:", error);
+    alert("Hubo un problema al procesar el pago.");
+  }
 }
+
+
+
 
 function agregarAlCarrito() {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];

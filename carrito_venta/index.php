@@ -7,6 +7,7 @@
     <title>Productos en Carrito</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div class="contenedor">
         <!-- Encabezado principal -->
@@ -55,5 +56,8 @@
             const usuarioID = <?php echo isset($_SESSION['usuario_id']) ? $_SESSION['usuario_id'] : 'null'; ?>;
         </script>
     <script src="carrito.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="carrito.js"></script>
+
 </body>
 </html>
