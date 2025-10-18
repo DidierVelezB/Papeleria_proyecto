@@ -9,7 +9,7 @@
 <body>
     <div class="login-wrapper">
         <div class="login-card">
-            <img src="img/logo-horizontal.png" alt="Logo Papelería" class="Logo">
+            <img src="img/papeleria/logo_papeleria copia.jpg" alt="Logo Papelería" class="Logo">
 
             <form method="post" action="">
                 <h2>Inicio de sesión</h2>

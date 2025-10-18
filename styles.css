@@ -21,7 +21,7 @@ body {
 /* ===== TARJETA DE LOGIN ===== */
 .login-card {
     background: white;
-    padding: 80px 45px;
+    padding: 60px 45px;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     width: 320px;
@@ -33,9 +33,9 @@ body {
 
 /* ===== LOGO ===== */
 .Logo {
-    width: 230px; /* ideal para logos horizontales */
+    width: 320px; /* ideal para logos horizontales */
     height: auto;
-    margin: 0 auto 15px;
+    margin: 0 auto -1px;
     display: block;
     object-fit: contain;
 }
