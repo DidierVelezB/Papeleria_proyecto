@@ -1,39 +1,37 @@
 <?php
 session_start();
-include '../conexion_bd.php';
-
-// Encabezado HTML
-header('Content-Type: text/html; charset=utf-8');
-
-// Verificar que exista el carrito guardado en la sesión
-$carritoJSON = $_SESSION['carrito_json'] ?? null;
-
-if ($carritoJSON) {
-    $productos = json_decode($carritoJSON, true);
-
-    if (is_array($productos)) {
-        foreach ($productos as $p) {
-            $id = (int)$p['id'];
-            $cantidad = (int)$p['cantidad'];
-
-            // Restar cantidad disponible sin permitir números negativos
-            $conexion->query("UPDATE producto SET cantidad = GREATEST(cantidad - $cantidad, 0) WHERE id = $id");
-        }
-
-        // Vaciar carrito de la sesión
-        unset($_SESSION['carrito_json']);
-    }
-}
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <title>Pago exitoso</title>
+  <script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    if (carrito.length > 0) {
+      try {
+        await fetch("../pagos/actualizar_stock.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ productos: carrito })
+        });
+
+        // Limpiar carrito
+        localStorage.removeItem("carrito");
+        alert("Stock actualizado correctamente ✅");
+      } catch (error) {
+        console.error("Error al actualizar el stock:", error);
+      }
+    }
+  });
+  </script>
 </head>
 <body style="font-family: Arial; text-align: center; padding: 50px;">
   <h1>✅ ¡Pago exitoso!</h1>
-  <p>Gracias por tu compra. El stock ha sido actualizado automáticamente.</p>
+  <p>Gracias por tu compra. Nos pondremos en contacto contigo pronto.</p>
   <a href="../ropa_venta/index.php">Volver a la tienda</a>
 </body>
 </html>
