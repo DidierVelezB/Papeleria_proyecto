@@ -44,6 +44,9 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'administrador') { die('Acc
     <label>Precio (solo números):</label>
     <input type="number" step="0.01" name="precio" required>
 
+    <label>Cantidad en Stock:</label>
+    <input type="number" name="cantidad" min="0" step="1" required>
+
     <!-- Categoría -->
     <label>Categoría:</label>
     <select name="categoria" id="categoria" required>

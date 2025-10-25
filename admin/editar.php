@@ -84,6 +84,9 @@ $presentaciones = [
     <label>Precio:</label>
     <input type="number" step="0.01" name="precio" value="<?= htmlspecialchars($prod['precio']) ?>" required>
 
+    <label>Cantidad en Stock:</label>
+    <input type="number" name="cantidad" min="0" value="<?= (int)$prod['cantidad'] ?>" required>
+
     <label>Categoría:</label>
     <select name="categoria" required>
         <option value="">Seleccione una categoría</option>

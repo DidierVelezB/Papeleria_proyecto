@@ -8,6 +8,7 @@ include '../conexion_bd.php';
 $nombre        = trim($_POST['nombre'] ?? '');
 $descripcion   = trim($_POST['descripcion'] ?? '');
 $precio        = (float)($_POST['precio'] ?? 0);
+$cantidad      = (int)($_POST['cantidad'] ?? 0);
 $categoria     = trim($_POST['categoria'] ?? '');
 $subcategoria  = trim($_POST['subcategoria'] ?? '');
 $tipo          = trim($_POST['tipo'] ?? '');
@@ -71,11 +72,14 @@ if (!file_exists($destPath)) {
 $relPath = 'img/' . $catFolder . '/' . $subcatFolder . ($tipoFolder !== '' ? '/'.$tipoFolder : '') . '/' . $unico;
 
 // 8) Insertar en BD
+$cantidad = (int)($_POST['cantidad'] ?? 0);
+
 $stmt = $conexion->prepare(
-  "INSERT INTO producto (nombre, descripcion, precio, categoria, subcategoria, tipo, marca, presentacion, imagen)
-   VALUES (?,?,?,?,?,?,?,?,?)"
+  "INSERT INTO producto (nombre, descripcion, precio, cantidad, categoria, subcategoria, tipo, marca, presentacion, imagen)
+   VALUES (?,?,?,?,?,?,?,?,?,?)"
 );
-$stmt->bind_param("ssdssssss", $nombre, $descripcion, $precio, $categoria, $subcategoria, $tipo, $marca, $presentacion, $relPath);
+$stmt->bind_param("ssdissssss", $nombre, $descripcion, $precio, $cantidad, $categoria, $subcategoria, $tipo, $marca, $presentacion, $relPath);
+
 
 if ($stmt->execute()) {
   header('Location: listar.php?ok=1');

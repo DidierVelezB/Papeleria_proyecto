@@ -7,7 +7,7 @@ require_once __DIR__ . '/../conexion_bd.php';
 
 
 $productos = [];
-$sql = "SELECT id, nombre, descripcion, precio, categoria, subcategoria, tipo, marca, presentacion, imagen 
+$sql = "SELECT id, nombre, descripcion, precio, cantidad, categoria, subcategoria, tipo, marca, presentacion, imagen 
         FROM producto";
 
 $result = $conexion->query($sql);
@@ -18,6 +18,7 @@ while ($row = $result->fetch_assoc()) {
         'nombre' => $row['nombre'],
         'descripcion' => $row['descripcion'],
         'precio' => (float)$row['precio'],
+        'cantidad' => (int)$row['cantidad'],
         'categoria' => $row['categoria'],
         'subcategoria' => $row['subcategoria'],
         'tipo' => $row['tipo'],
