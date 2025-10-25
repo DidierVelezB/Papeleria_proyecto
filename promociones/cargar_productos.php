@@ -25,6 +25,7 @@ while ($row = $result->fetch_assoc()) {
         'marca' => $row['marca'],
         'presentacion' => $row['presentacion'],
         'imagen' => $row['imagen']
+        
     ];
 }
 

@@ -41,16 +41,37 @@ function cargarCarrito() {
             <p><strong>Tipo:</strong> ${producto.tipo || "-"}</p>
             <p><strong>Marca:</strong> ${producto.marca || "-"}</p>
             <p><strong>Presentación:</strong> ${producto.presentacion || "-"}</p>
+
+            <p class="stock" id="stock-${producto.id}">
+                <strong>Stock:</strong> <span class="stock-num">Cargando...</span>
+            </p>
+
             <p class="cantidad-container">
                 <button class="btn-cantidad btn-menos" data-id="${producto.id}">−</button>
                 <span class="cantidad-num">${producto.cantidad}</span>
                 <button class="btn-cantidad btn-mas" data-id="${producto.id}">+</button>
             </p>
+
             <p class="precio-total">$${(producto.precio * producto.cantidad).toLocaleString()}</p>
             <button class="btn-eliminar" data-id="${producto.id}">Eliminar</button>
         </div>
     </div>
 `).join('');
+
+// 🔹 Mostrar el stock actual de cada producto
+carrito.forEach(async (producto) => {
+    try {
+        const response = await fetch(`../admin/obtener_stock.php?id=${producto.id}`);
+        const data = await response.json();
+        const stock = data.cantidad ?? "Sin datos";
+        const stockElement = document.querySelector(`#stock-${producto.id} .stock-num`);
+        if (stockElement) stockElement.textContent = stock;
+    } catch (error) {
+        console.error("Error al obtener stock de producto " + producto.id, error);
+    }
+});
+
+
     // Listeners de cantidad
     document.querySelectorAll('.btn-mas').forEach(btn => {
         btn.addEventListener('click', () => cambiarCantidad(btn.dataset.id, +1));
@@ -83,19 +104,36 @@ function eliminarProducto(e) {
     actualizarTotales();
     actualizarContador();
 }
-function cambiarCantidad(id, delta) {
+async function cambiarCantidad(id, delta) {
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+    const response = await fetch(`../admin/obtener_stock.php?id=${id}`);
+    const data = await response.json();
+
+    const stockDisponible = data.cantidad ?? 0;
+
     carrito = carrito.map(producto => {
         if (producto.id.toString() === id.toString()) {
-            producto.cantidad = Math.max(1, (producto.cantidad || 1) + delta);
+            const nuevaCantidad = (producto.cantidad || 1) + delta;
+
+            if (nuevaCantidad < 1) {
+                producto.cantidad = 1;
+            } else if (nuevaCantidad > stockDisponible) {
+                alert(`Solo hay ${stockDisponible} unidades disponibles.`);
+                producto.cantidad = stockDisponible;
+            } else {
+                producto.cantidad = nuevaCantidad;
+            }
         }
         return producto;
     });
+
     localStorage.setItem('carrito', JSON.stringify(carrito));
-    cargarCarrito();      
-    actualizarTotales(); 
+    cargarCarrito();
+    actualizarTotales();
     actualizarContador();
 }
+
 
 
 function actualizarTotales() {
@@ -177,6 +215,11 @@ async function procesarPago() {
   const total = carrito.reduce((sum, producto) =>
     sum + (producto.precio * (producto.cantidad || 1)), 0
   );
+    await fetch("../pagos/guardar_carrito.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ carrito }),
+    });
 
   try {
     const response = await fetch("../pagos/create_checkout.php", {

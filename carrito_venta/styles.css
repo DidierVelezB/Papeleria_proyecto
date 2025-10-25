@@ -442,3 +442,18 @@ input[type="text"]:focus {
     display: flex;
     justify-content: space-between;
 }
+.stock {
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+.stock strong {
+  color: #333;
+}
+.stock-num {
+  color: #007b00;
+  font-weight: bold;
+}
