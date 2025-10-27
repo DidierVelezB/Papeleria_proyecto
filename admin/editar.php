@@ -47,6 +47,16 @@ $presentaciones = [
     'Unidad', 'Paquete x5', 'Paquete x10', 'Paquete x12', 'Caja x24', 'Caja x50',
     'Caja x100', 'Blister', 'Display', 'Granel'
 ];
+function normalizar($texto) {
+    $texto = trim(mb_strtolower($texto, 'UTF-8'));
+    $texto = str_replace(
+        ['á','é','í','ó','ú','ü','ñ'],
+        ['a','e','i','o','u','u','n'],
+        $texto
+    );
+    return $texto;
+}
+
 ?>
 <!doctype html>
 <html lang="es">
@@ -91,7 +101,8 @@ $presentaciones = [
     <select name="categoria" required>
         <option value="">Seleccione una categoría</option>
         <?php foreach ($categorias as $cat): ?>
-            <option value="<?= htmlspecialchars($cat) ?>" <?= ($prod['categoria'] == $cat) ? 'selected' : '' ?>>
+            <option value="<?= htmlspecialchars($cat) ?>" 
+                <?= (normalizar($prod['categoria']) === normalizar($cat)) ? 'selected' : '' ?>>
                 <?= htmlspecialchars($cat) ?>
             </option>
         <?php endforeach; ?>
@@ -101,7 +112,8 @@ $presentaciones = [
     <select name="subcategoria" required>
         <option value="">Seleccione una subcategoría</option>
         <?php foreach ($subcategorias as $sc): ?>
-            <option value="<?= htmlspecialchars($sc) ?>" <?= ($prod['subcategoria'] == $sc) ? 'selected' : '' ?>>
+            <option value="<?= htmlspecialchars($sc) ?>" 
+                <?= (normalizar($prod['subcategoria']) === normalizar($sc)) ? 'selected' : '' ?>>
                 <?= htmlspecialchars($sc) ?>
             </option>
         <?php endforeach; ?>
@@ -111,7 +123,8 @@ $presentaciones = [
     <select name="tipo" required>
         <option value="">Seleccione un tipo</option>
         <?php foreach ($tipos as $t): ?>
-            <option value="<?= htmlspecialchars($t) ?>" <?= ($prod['tipo'] == $t) ? 'selected' : '' ?>>
+            <option value="<?= htmlspecialchars($t) ?>" 
+                <?= (normalizar($prod['tipo']) === normalizar($t)) ? 'selected' : '' ?>>
                 <?= htmlspecialchars($t) ?>
             </option>
         <?php endforeach; ?>
@@ -121,17 +134,19 @@ $presentaciones = [
     <select name="marca" required>
         <option value="">Seleccione una marca</option>
         <?php foreach ($marcas as $m): ?>
-            <option value="<?= htmlspecialchars($m) ?>" <?= ($prod['marca'] == $m) ? 'selected' : '' ?>>
+            <option value="<?= htmlspecialchars($m) ?>" 
+                <?= (normalizar($prod['marca']) === normalizar($m)) ? 'selected' : '' ?>>
                 <?= htmlspecialchars($m) ?>
             </option>
         <?php endforeach; ?>
     </select>
 
-    <label>Presentación:</label>
+   <label>Presentación:</label>
     <select name="presentacion" required>
         <option value="">Seleccione una presentación</option>
         <?php foreach ($presentaciones as $p): ?>
-            <option value="<?= htmlspecialchars($p) ?>" <?= ($prod['presentacion'] == $p) ? 'selected' : '' ?>>
+            <option value="<?= htmlspecialchars($p) ?>" 
+                <?= (normalizar($prod['presentacion']) === normalizar($p)) ? 'selected' : '' ?>>
                 <?= htmlspecialchars($p) ?>
             </option>
         <?php endforeach; ?>

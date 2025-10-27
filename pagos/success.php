@@ -1,7 +1,6 @@
 <?php
 session_start();
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,15 +12,19 @@ session_start();
 
     if (carrito.length > 0) {
       try {
-        await fetch("../pagos/actualizar_stock.php", {
+        const response = await fetch("../pagos/actualizar_stock.php", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ productos: carrito })
         });
 
-        // Limpiar carrito
-        localStorage.removeItem("carrito");
-        alert("Stock actualizado correctamente ✅");
+        const data = await response.json();
+        if (data.success) {
+          console.log("✅ Stock actualizado correctamente en la base de datos.");
+          localStorage.removeItem("carrito"); // Limpia el carrito
+        } else {
+          console.error("❌ Error al actualizar stock:", data.error);
+        }
       } catch (error) {
         console.error("Error al actualizar el stock:", error);
       }

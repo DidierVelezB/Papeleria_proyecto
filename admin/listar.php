@@ -54,7 +54,9 @@ $res = $conexion->query("SELECT * FROM producto ORDER BY id DESC");
       <th>Presentación</th>
       <th>Precio</th>
       <th>Cantidad</th>
+      <th>Estado</th>
       <th>Acciones</th>
+      
     </tr>
     <?php while ($p = $res->fetch_assoc()): ?>
       <tr>
@@ -67,8 +69,20 @@ $res = $conexion->query("SELECT * FROM producto ORDER BY id DESC");
         <td><?= htmlspecialchars($p['marca']) ?></td>
         <td><?= htmlspecialchars($p['presentacion']) ?></td>
         <td>$<?= number_format($p['precio'], 0, ',', '.') ?></td>
+        
         <td><?= (int)$p['cantidad'] ?></td>
         <td>
+        <?php
+          if (isset($p['activo']) && (int)$p['activo'] === 0) {
+            echo '<span style="color:red;font-weight:bold;">Agotado</span>';
+          } else {
+            echo '<span style="color:green;font-weight:bold;">Disponible</span>';
+          }
+        ?>
+      </td>
+
+        <td>
+          
           <a href="editar.php?id=<?= (int)$p['id'] ?>">Editar</a> |
           <a href="eliminar_producto.php?id=<?= (int)$p['id'] ?>" onclick="return confirm('¿Eliminar este producto?')">Eliminar</a>
         </td>

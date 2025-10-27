@@ -12,6 +12,7 @@ $categoria     = trim($_POST['categoria'] ?? '');
 $subcategoria  = trim($_POST['subcategoria'] ?? '');
 $tipo          = trim($_POST['tipo'] ?? '');
 $marca         = trim($_POST['marca'] ?? '');
+$cantidad      = (int)$_POST['cantidad'];
 $presentacion  = trim($_POST['presentacion'] ?? '');
 
 if ($id <= 0 || $nombre === '' || $precio <= 0 || $categoria === '' || $subcategoria === '' || $tipo === '' || $marca === '' || $presentacion === '') { 
@@ -58,10 +59,28 @@ if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
 
 // 3) Actualizar BD
 $stmt = $conexion->prepare(
-  "UPDATE producto SET nombre=?, descripcion=?, precio=?, categoria=?, subcategoria=?, tipo=?, marca=?, presentacion=?, imagen=? WHERE id=?"
+  "UPDATE producto SET nombre=?, descripcion=?, precio=?, categoria=?, subcategoria=?, tipo=?, marca=?, presentacion=?, cantidad=?, imagen=? WHERE id=?"
 );
-$stmt->bind_param("ssdssssssi", $nombre, $descripcion, $precio, $categoria, $subcategoria, $tipo, $marca, $presentacion, $nuevaRuta, $id);
+$stmt->bind_param("ssdsssssisi", 
+  $nombre, 
+  $descripcion, 
+  $precio, 
+  $categoria, 
+  $subcategoria, 
+  $tipo, 
+  $marca, 
+  $presentacion, 
+  $cantidad, 
+  $nuevaRuta, 
+  $id
+);
+
 if ($stmt->execute()) {
+  // Reactivar producto si tiene stock
+  if ($cantidad > 0) {
+      $conexion->query("UPDATE producto SET activo = 1 WHERE id = $id");
+  }
+
   header('Location: listar.php?ok=1');
   exit;
 }
