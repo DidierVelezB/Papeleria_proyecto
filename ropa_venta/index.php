@@ -77,7 +77,7 @@ session_start();
   <section class="productos-grid">
      <?php
         include '../conexion_bd.php';
-        $sql = "SELECT * FROM producto";
+        $sql = "SELECT * FROM producto WHERE activo = 1 AND cantidad > 0";
         $resultado = $conexion->query($sql);
 
         if ($resultado->num_rows > 0) {

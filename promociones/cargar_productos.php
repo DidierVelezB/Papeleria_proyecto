@@ -9,7 +9,7 @@ require_once __DIR__ . '/../conexion_bd.php';
 $productos = [];
 $sql = "SELECT id, nombre, descripcion, precio, cantidad, categoria, subcategoria, tipo, marca, presentacion, imagen 
         FROM producto
-        WHERE activo = 1";
+        WHERE activo = 1 AND cantidad > 0";
 
 $result = $conexion->query($sql);
 
