@@ -124,7 +124,7 @@ h1 {
 
 /* Botón eliminar */
 .btn-eliminar {
-  background: linear-gradient(90deg, #ff4081 0%, #ff1b6b 100%);
+  background: #00b8f0;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -134,7 +134,7 @@ h1 {
   transition: all 0.3s ease;
 }
 .btn-eliminar:hover {
-  background: linear-gradient(90deg, #ff1b6b 0%, #ff4081 100%);
+  background: #ff1b6b;
   transform: scale(1.05);
   box-shadow: 0 3px 10px rgba(255,64,129,0.4);
 }
@@ -326,13 +326,13 @@ h1 {
 }
 .precio-unitario {
   font-size: 0.9rem;
-  color: #666; /* un gris suave */
+  color: #666; 
 }
 
 .precio-total {
   font-size: 1.1rem;
   font-weight: bold;
-  color: #009a9a; /* el color principal de tu paleta */
+  color: #009a9a; 
   margin-top: 5px;
 }
 
@@ -368,7 +368,7 @@ input[type="text"]:focus {
 }
 
 .boton-aplicar {
-  background: linear-gradient(90deg, #00b8f0 0%, #ff4081 100%);
+  background: #00b8f0 0%;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -379,13 +379,13 @@ input[type="text"]:focus {
 }
 
 .boton-aplicar:hover {
-  background: linear-gradient(90deg, #ff4081 0%, #00b8f0 100%);
+  background: #ff4081;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0,184,240,0.3);
 }
 
 .boton-pagar {
-  background: linear-gradient(90deg, #00b8f0 0%, #ff4081 100%);
+  background: #00b8f0;
   border: none;
   padding: 15px;
   font-weight: 700;
@@ -400,7 +400,7 @@ input[type="text"]:focus {
 }
 
 .boton-pagar:hover {
-  background: linear-gradient(90deg, #ff4081 0%, #00b8f0 100%);
+  background: #ff4081;
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(0,184,240,0.3);
 }
@@ -457,7 +457,7 @@ input[type="text"]:focus {
 }
 .resumen-compra {
     position: sticky;
-    top: 20px; /* Espacio desde el top al hacer scroll */
+    top: 194px; /* Espacio desde el top al hacer scroll */
     background-color: rgba(255, 255, 255, 0.85);
     padding: 20px;
     border-radius: 10px;
@@ -478,7 +478,7 @@ input[type="text"]:focus {
   padding: 4px 8px;
   border-radius: 6px;
   display: inline-block;
-  margin-bottom: 6px;
+  margin-bottom: 1px;
 }
 .stock strong {
   color: #333;
@@ -548,7 +548,7 @@ input[type="text"]:focus {
 }
 
 .precio-total {
-  margin: 0;
+  margin: 1;
   font-size: 1rem;
   color: #000000;
   font-weight: bold;
