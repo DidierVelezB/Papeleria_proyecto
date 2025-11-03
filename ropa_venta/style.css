@@ -25,6 +25,11 @@ header {
   color: #fff;
   font-weight: 600;
   font-size: 18px;
+  position: fixed;      
+  left: 50%;           
+  transform: translateX(-50%); 
+  width: max-content; 
+  
 }
 
 .nav-left, .nav-right {
@@ -155,7 +160,7 @@ main {
 .productos-grid {
   visibility: visible !important;
   display: grid !important;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+  grid-template-columns: repeat(auto-fill, minmax(235px, 1fr)) !important;
   gap: 20px !important;
   padding: 20px !important;
 }
@@ -172,8 +177,8 @@ main {
 
 .producto:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 45, 43, 0.2); /* Sombra con tono #002d2b */
-  border-color: #002d2b; /* Color solicitado */
+  box-shadow: 0 8px 16px rgba(0, 45, 43, 0.2); 
+  border-color: #4ee608; 
 }
 
 
@@ -210,45 +215,44 @@ main {
 /* Botón añadir al carrito */
 .btn-add {
   margin-top: 0.5rem;
-  background-color: #00b5b5;
-  color: white;
+  background: linear-gradient(90deg, #00b8f0 0%, #ff4081 100%);
+  color: #fff;
+  font-weight: 600;
   border: none;
+  border-radius: 10px;
   padding: 0.5rem 1rem;
-  border-radius: 5px;
   cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
 }
 
 .btn-add:hover {
-  background-color: #002d2b;
+  background: linear-gradient(90deg, #ff4081 0%, #00b8f0 100%);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 10px rgba(0,0,0,0.3);
 }
-
+.btn-add:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
 /* ===== CARRITO DE COMPRAS ===== */
 
 .lista-carrito {
   margin: 2rem 0;
 }
-
-.productos-carrito {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.item-carrito {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+.producto {
+  background-color: #fff;
+  border: 2px solid #ddd;
   padding: 1rem;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border-radius: 15px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
-
-.item-carrito img {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 4px;
+.producto:hover {
+  border-color: #00b8f0;
+  box-shadow: 0 8px 16px rgba(0,184,240,0.3);
+  transform: translateY(-4px);
 }
 
 .btn-comprar {
@@ -371,12 +375,12 @@ main {
   transform: scale(1.05);
 }
 .pagina-btn.active {
-  background-color: #00b5b5;
+  background-color: #00b8f0;
   color: white;
   font-weight: bold;
 }
 .pagina-btn.active:hover {
-  background-color: #002d2b; 
+  background-color: #ff4081; 
 }
 /* ==== Tarjeta de producto refinada ==== */
 
@@ -411,8 +415,8 @@ main {
 }
 
 .precio {
-  color: #00b5b5;
-  font-size: 1.2rem;
+  color: #000000;
   font-weight: bold;
-  margin-top: 0.4rem;
+  font-size: 1.2rem;
+  margin: 0.6rem 0;
 }
