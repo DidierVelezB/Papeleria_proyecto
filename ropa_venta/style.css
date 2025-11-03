@@ -50,7 +50,7 @@ header {
   padding: 6px 14px;
   border-radius: 8px;
   background-color: rgba(255, 255, 255, 0.15);
-  transition: all 0.25s ease;
+  transition: all 0.25s ease; 
   position: absolute;
   right: 360px;
   top: 18px;

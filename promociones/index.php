@@ -26,9 +26,10 @@
                 <!-- Aquí se mostrarán los productos sugeridos -->
                     <p style="color:#777">Aquí aparecerán tus sugerencias personalizadas pronto...</p>
                 </div>
-                <button onclick="cargarRecomendaciones()">Cargar Recomendaciones</button>
-                <button onclick="limpiarHistorial()">Limpiar Historial</button>
-
+                <div class="contenedor">  
+                    <button onclick="cargarRecomendaciones()">Cargar Recomendaciones</button>
+                    <button onclick="limpiarHistorial()">Limpiar Historial</button>
+                </div>
 
             </div>
         </div>

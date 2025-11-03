@@ -1,200 +1,234 @@
+/* ==== BASE ==== */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-    text-decoration: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-decoration: none;
 }
 
 body, html {
-    width: 100%;
-    height: 100%;
-    background-color: #e6e6e6;
+  width: 100%;
+  height: 100%;
+  background-color: #e6e6e6;
 }
 
+/* ==== CONTENEDOR ==== */
 .container {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
+/* ==== HEADER ==== */
 header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    border-bottom: 2px solid #333;
-    background-color: #e6e6e6;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(90deg, #00b8f0 0%, #ff4081 100%);
+  align-items: center;
+  padding: 13px;
+  border-bottom: 1px solid #004d4d;
+  background-color: #ffffff;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
+
 header h1 {
-    font-size: 2em;
-    color: #4a3c35;
-    margin: 0;
+  font-size: 2em;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
 }
 
-.logo h1 {
-    text-align: center;
-    color: #4a3c35;
-    flex-grow: 1;
-}
-
+/* ==== BOTÓN HOME ==== */
 .home-link {
-    position: fixed;
-    top: 25px;
-    left: 25px;
-    background-color: #00b5b5;
-    padding: 8px 12px;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    z-index: 10000;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+  position: fixed;
+  top: 15px;
+  right: 70px;
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #fff;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
-.home-button, .home-button a {
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-    font-size: 16px;
-    color: #000;
-    transition: opacity 0.3s ease;
-    cursor: pointer;
-    text-decoration: none;
+.home-link:hover {
+  background-color: #ff4081;
+  color: #fff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
 }
 
-.icono {
-    width: 40px;
-    height: 30px;
-    background-size: contain;
-}
-
+/* ==== FORMULARIO ==== */
 .formulario {
-    flex-grow: 1;
-    display: flex;
-    padding: 40px;
-    gap: 20px;
-    cursor: pointer;
+  flex-grow: 1;
+  display: flex;
+  padding: 40px;
+  gap: 20px;
+  background: linear-gradient(to bottom right, #f9f9f9, #e6e6e6);
 }
 
 .form-columna {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    border: 2px solid #333;
-    padding: 20px;
-    background-color: #e6e6e6;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #00b5b5;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.form-columna img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    aspect-ratio: 1/1;
-    border: 1px solid #ccc;
-    transition: transform 0.3s ease;
-    cursor: pointer;
+.form-columna:hover {
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+  border-color: #004d4d;
 }
 
-.linReporte {
-    text-align: center;
+.form-columna h2 {
+  color: #004d4d;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 1.4em;
+  text-transform: uppercase;
 }
 
-.imagen-perfil {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-    cursor: pointer;
-}
-
-.imagen-perfil img {
-    width: 250px;
-    height: 250px;
-    background-color: #eee;
-    margin-bottom: 15px;
-    border-radius: 50%;
-    overflow: hidden;
-}
-
-label {
-    margin: 10px 0 5px;
-    font-weight: bold;
-}
-
-input, textarea {
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-textarea {
-    height: 100%;
-    resize: none;
-    margin-top: 10px;
-}
-
+/* ==== BOTONES ==== */
 button {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #d2c5bd;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  margin-top: 20px;
+  width: 1000px;
+  padding: 12px 20px;
+  background-color: #00b8f0;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
+.contenedor {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;    
+  gap: 12px;             
+}
+
+/* Hacer los botones más pequeños y proporcionales */
+.contenedor button {
+  min-width: 120px;        /* ancho mínimo cómodo */
+  padding: 15px 18px;       /* compacto pero cómodo */
+  margin-top: 20px;        /* mantiene tu espacio superior */
+}
 button:hover {
-    background-color: #a79588;
+  background-color: #ff4081;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
 
+button:active {
+  transform: scale(0.97);
+}
+
+/* ==== PRODUCTOS ==== */
 .producto-sugerido {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background: #fff;
-    text-align: center;
-    width: 180px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: #fff;
+  text-align: center;
+  width: 180px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .producto-sugerido:hover {
-    transform: scale(1.03);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  border-color: #00b8f0;
 }
 
 .producto-sugerido img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.producto-sugerido:hover img {
+  transform: scale(1.01);
 }
 
 .producto-sugerido h3 {
-    font-size: 1em;
-    margin: 10px 0 5px;
-    color: #4a3c35;
+  font-size: 1em;
+  margin: 10px 0 5px;
+  color: #000000;
+  font-weight: 600;
 }
 
 .producto-sugerido p {
-    font-size: 0.9em;
-    color: #777;
+  font-size: 0.9em;
+  color: #000000;
+  transition: color 0.3s ease;
 }
 
+.producto-sugerido:hover p {
+  color: #565353;
+}
+
+.precio {
+  font-size: 1rem;
+  color: #00b5b5;
+  font-weight: bold;
+  margin-top: 7px;
+}
+
+/* ==== CAJA DE RECOMENDACIONES ==== */
 .recomendaciones-box {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    padding: 15px;
-    background-color: #fff;
-    border: 2px dashed #aaa;
-    border-radius: 10px;
-    min-height: 200px;
-    max-height: 500px;
-    overflow-y: auto;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  padding: 15px;
+  background-color: #fafafa;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  min-height: 200px;
+  max-height: 500px;
+  overflow-y: auto;
+  cursor: pointer;
+  justify-content: center;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.recomendaciones-box:hover {
+  border-color: #00b8f0;
+  background-color: #fefefe;
+}
+
+/* ==== SCROLL ==== */
+.recomendaciones-box::-webkit-scrollbar {
+  width: 8px;
+}
+
+.recomendaciones-box::-webkit-scrollbar-thumb {
+  background-color: #00b8f0;
+  border-radius: 10px;
+}
+
+.recomendaciones-box::-webkit-scrollbar-thumb:hover {
+  background-color: #00b8f0;
+}
+
+.recomendaciones-box::-webkit-scrollbar-track {
+  background: #f0f0f0;
 }

@@ -91,8 +91,8 @@ function cargarRecomendaciones() {
       <h3>${producto.nombre}</h3>
       <img src="../${producto.imagen}" alt="${producto.nombre}" />
       <p><strong>Categoría:</strong> ${producto.categoria}</p>
-      <p><strong>Subcategoría:</strong> ${producto.subcategoria}</p>
-      <p><strong>Marca:</strong> ${producto.marca}</p>
+      <p><strong></strong> ${producto.subcategoria}</p>
+      <p><strong></strong> ${producto.marca}</p>
       <p class="precio">$${producto.precio.toLocaleString()}</p>
     `;
     contenedor.appendChild(item);
