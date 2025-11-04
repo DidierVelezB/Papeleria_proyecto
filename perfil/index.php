@@ -16,15 +16,17 @@ date_default_timezone_set('America/Bogota');
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-
-    <div class="home-button">
-        <a href="../ropa_venta/index.php" class="home-link">
-            <i class="fa-solid fa-house-chimney"></i>
-            <span class="home">HOME</span>
-        </a>
-    </div>
-
-    <h1>PERFIL</h1>
+    <header>
+        <div class="home-button">
+            <a href="../ropa_venta/index.php" class="home-link">
+                <i class="fa-solid fa-house-chimney"></i>
+                <span class="home">HOME</span>
+            </a>  
+        </div>
+                <h1>PERFIL</h1>
+    </header>
+        
+    
     <div class="container">
         <div class="perfil">
             <div class="avatar">
