@@ -27,7 +27,7 @@ header {
   justify-content: center;
   background: linear-gradient(90deg, #00b8f0 0%, #ff4081 100%);
   align-items: center;
-  padding: 13px;
+  padding: 15px;
   border-bottom: 1px solid #004d4d;
   background-color: #ffffff;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
@@ -48,23 +48,21 @@ header h1 {
   position: fixed;
   top: 15px;
   right: 70px;
-  background-color: rgba(255, 255, 255, 0.15);
-  padding: 8px 12px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
-  z-index: 10000;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 10px 18px;
+  border-radius: 10px;
   color: #fff;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease; 
 }
 
 .home-link:hover {
-  background-color: #ff4081;
-  color: #fff;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  background: #fff;
+  color: #00b8f0;
+  box-shadow: 0 4px 10px rgba(255,255,255,0.4);
+  transform: translateY(-2px);
 }
 
 /* ==== FORMULARIO ==== */
@@ -123,11 +121,10 @@ button {
   gap: 12px;             
 }
 
-/* Hacer los botones más pequeños y proporcionales */
 .contenedor button {
-  min-width: 120px;        /* ancho mínimo cómodo */
-  padding: 15px 18px;       /* compacto pero cómodo */
-  margin-top: 20px;        /* mantiene tu espacio superior */
+  min-width: 120px;       
+  padding: 15px 18px;       
+  margin-top: 20px;       
 }
 button:hover {
   background-color: #ff4081;

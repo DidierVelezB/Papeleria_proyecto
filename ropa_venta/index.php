@@ -20,9 +20,11 @@ session_start();
         <a href="../soporte_tecnico/index.php">Soporte Técnico</a>
       </div>
     </div>
+
     <a href="../promociones/index.php">Promociones</a>
+
     <span class="saludo-usuario">
-    <?php echo "¡Hola, " . $_SESSION['usuario'] . '!'; ?>
+      <?php echo "¡Hola, " . $_SESSION['usuario'] . '!'; ?>
     </span>
   </div>
 

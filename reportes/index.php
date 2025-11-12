@@ -3,7 +3,7 @@ session_start();
 date_default_timezone_set('America/Bogota');
 
 // Buscar imagen de perfil según ID del usuario
-$avatar = '../perfil/uploads/default.jpg'; // Ruta por defecto
+$avatar = '../perfil/uploads/default.jpg'; 
 
 if (isset($_SESSION['usuario_id'])) {
     $usuario_id = $_SESSION['usuario_id'];
