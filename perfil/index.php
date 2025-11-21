@@ -86,35 +86,42 @@ date_default_timezone_set('America/Bogota');
                 if ($conexion->connect_error) {
                     echo "<p>Error de conexión: " . $conexion->connect_error . "</p>";
                 } else {
-                    $stmt = $conexion->prepare("SELECT producto, fecha, precio, talla, imagen FROM historial WHERE id_cliente = ? ORDER BY fecha DESC");
+                    $stmt = $conexion->prepare("
+                        SELECT producto, fecha, precio, imagen 
+                        FROM historial 
+                        WHERE id_cliente = ? 
+                        ORDER BY fecha DESC
+                    ");
                     $stmt->bind_param("i", $usuario_id);
                     $stmt->execute();
                     $resultado = $stmt->get_result();
 
+
                     if ($resultado->num_rows > 0) {
                         echo "<ul class='lista-historial'>";
                         while ($fila = $resultado->fetch_assoc()) {
-                            echo "<li style='margin-bottom:15px; display:flex; align-items:center; gap:10px;'>";
 
-                            
                             $urlFinalConCache = 'http://localhost:3000/' . $fila['imagen'] . '?v=' . time();
 
-                            echo "<img src='" . htmlspecialchars($urlFinalConCache) . "' alt='Imagen producto' style='width:60px; height:auto; border-radius:5px;'>";
+                            echo "<li style='margin-bottom:15px; display:flex; align-items:center; gap:10px;'>";
 
-
+                            echo "<img src='" . htmlspecialchars($urlFinalConCache) . "' 
+                                alt='Imagen producto' 
+                                style='width:60px; height:auto; border-radius:5px;'>";
 
                             echo "<div>";
                             echo "<strong>Producto:</strong> " . htmlspecialchars($fila['producto']) . "<br>";
-                            echo "<strong>Talla:</strong> " . htmlspecialchars($fila['talla']) . "<br>";
                             echo "<strong>Precio:</strong> $" . number_format($fila['precio'], 0, ',', '.') . "<br>";
                             echo "<strong>Fecha:</strong> <span class='hora-usuario' data-utc='" . htmlspecialchars($fila['fecha']) . "'></span>";
                             echo "</div>";
+
                             echo "</li>";
                         }
                         echo "</ul>";
                     } else {
                         echo "<p>No hay historial de compras.</p>";
                     }
+
 
                     $stmt->close();
                     $conexion->close();
