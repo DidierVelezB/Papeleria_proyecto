@@ -5,7 +5,7 @@ if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);
 }
 
-$sql = "SELECT imagen FROM historial LIMIT 10"; // Trae solo 10 para no saturar
+$sql = "SELECT imagen FROM historial LIMIT 10"; 
 $resultado = $conexion->query($sql);
 
 if ($resultado->num_rows > 0) {

@@ -24,7 +24,7 @@ if ($total <= 0) {
     exit;
 }
 
-// 🔹 Validar monto mínimo exigido por Stripe (~2000 COP)
+//  Validar monto mínimo exigido por Stripe (~2000 COP)
 if ($total < 2000) {
     echo json_encode([
         'error' => 'El monto mínimo de pago es de $2.000 COP. '
@@ -44,7 +44,7 @@ try {
             'price_data' => [
                 'currency' => 'cop',
                 'product_data' => ['name' => 'Compra Papelería Punto Escolar'],
-                'unit_amount' => $total * 100, // Stripe trabaja en centavos
+                'unit_amount' => $total * 100, // Monto en centavos
             ],
             'quantity' => 1,
         ]],

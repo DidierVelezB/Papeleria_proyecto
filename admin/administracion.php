@@ -10,7 +10,7 @@ try {
     $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // 1. Procesar TOGGLE ESTADO (corregido)
+    //  Procesar TOGGLE ESTADO (corregido)
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['toggle_estado'])) {
         $id = (int)$_POST['id'];
         $stmt = $conn->prepare("
@@ -23,7 +23,7 @@ try {
         header("Location: " . $_SERVER['PHP_SELF']);
         exit;
     }
-    // 2. Procesar ELIMINAR CÓDIGO
+    //  Procesar ELIMINAR CÓDIGO
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['borrar_codigo'])) {
         $id = (int)$_POST['id'];
         $stmt = $conn->prepare("DELETE FROM codigos_descuento WHERE id = :id");
@@ -35,7 +35,7 @@ try {
         exit;
     }
 
-    // 2. Procesar NUEVO CÓDIGO 
+    // Procesar NUEVO CÓDIGO 
     if (isset($_POST['nuevo_codigo'])) {
         $errores = [];
         

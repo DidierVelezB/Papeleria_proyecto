@@ -178,7 +178,7 @@ header {
 
 main {
   padding: 2rem;
-  padding-top: 40px; /* ESPACIO para el header sticky */
+  padding-top: 40px; 
 }
 
 .productos-grid {

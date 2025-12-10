@@ -10,7 +10,7 @@ if (!isset($_SESSION['usuario_id'])) {
 
 $usuario_id = $_SESSION['usuario_id'];
 
-// Recibimos los datos del formulario
+// Recibimos y limpiamos los datos del formulario
 $nombres = $_POST['nombres'] ?? '';
 $apellidos = $_POST['apellidos'] ?? '';
 $documento = $_POST['documento'] ?? '';
@@ -22,17 +22,17 @@ if ($nombres == '' || $apellidos == '' || $documento == '' || $fecha == '' || $r
     die("Por favor completa todos los campos.");
 }
 
-// Conectamos a la base de datos 
+// Conectamos a la base de datos
 $conn = new mysqli("localhost", "root", "", "genia");
 if ($conn->connect_error) {
     die("Error conectando a la base de datos: " . $conn->connect_error);
 }
 
-// Peparar la consulta para evitar inyecciones SQL
+// Preparamos la consulta para evitar inyecciones SQL
 $stmt = $conn->prepare("INSERT INTO reportes (nombres, apellidos, documento, fecha, reporte, usuario_id) VALUES (?, ?, ?, ?, ?, ?)");
 $stmt->bind_param("sssssi", $nombres, $apellidos, $documento, $fecha, $reporte, $usuario_id);
 
-// Ejecutamos y vemos qué pasa
+// Ejecutar la consulta
 if ($stmt->execute()) {
     echo "Reporte guardado, ¡gracias por avisarnos!";
 } else {

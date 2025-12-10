@@ -20,10 +20,10 @@ session_start();
 
         const data = await response.json();
         if (data.success) {
-          console.log("✅ Stock actualizado correctamente en la base de datos.");
+          console.log(" Stock actualizado correctamente en la base de datos.");
           localStorage.removeItem("carrito"); // Limpia el carrito
         } else {
-          console.error("❌ Error al actualizar stock:", data.error);
+          console.error(" Error al actualizar stock:", data.error);
         }
       } catch (error) {
         console.error("Error al actualizar el stock:", error);
@@ -33,7 +33,7 @@ session_start();
   </script>
 </head>
 <body style="font-family: Arial; text-align: center; padding: 50px;">
-  <h1>✅ ¡Pago exitoso!</h1>
+  <h1> ¡Pago exitoso!</h1>
   <p>Gracias por tu compra. Nos pondremos en contacto contigo pronto.</p>
   <a href="../ropa_venta/index.php">Volver a la tienda</a>
 </body>

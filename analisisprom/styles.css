@@ -140,14 +140,14 @@ main {
     border-radius: 20px;
 }
 .fa-shirt {
-    font-size: 50px; /* Tamaño del ícono */
+    font-size: 50px; 
     color: #333; 
     display: block;
     text-align: center;
     margin-bottom: 10px;
 }
 .fa-house-chimney{
-    font-size: 25px; /* Tamaño del ícono */
+    font-size: 25px; 
     color: #000000; 
     display: block;
     text-align: center;

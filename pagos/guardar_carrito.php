@@ -56,7 +56,7 @@ foreach ($data['carrito'] as $p) {
 
 $conexion->close();
 
-// Guardar carrito en sesión por si lo necesitas
+// Guardar carrito en sesión como JSON
 $_SESSION['carrito_json'] = json_encode($data['carrito']);
 
 echo json_encode(['success' => true, 'msg' => 'Historial actualizado']);

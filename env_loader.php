@@ -1,6 +1,5 @@
 <?php
 // === CARGADOR MANUAL DE VARIABLES .ENV ===
-// Este script lee el archivo .env y carga las variables en $_ENV, $_SERVER y getenv()
 
 $envPath = __DIR__ . '/.env';
 
@@ -27,6 +26,4 @@ foreach ($lines as $line) {
     $_ENV[$name] = $value;
     $_SERVER[$name] = $value;
 }
-
-// Solo para depuración local
-// echo "<pre>Cargado correctamente .env</pre>";
+// === FIN DEL CARGADOR MANUAL DE VARIABLES .ENV ===

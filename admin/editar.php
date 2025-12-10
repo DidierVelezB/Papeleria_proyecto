@@ -7,7 +7,7 @@ $stmt->execute();
 $prod = $stmt->get_result()->fetch_assoc();
 if (!$prod) { die('Producto no encontrado'); }
 
-// Definir las opciones para los dropdowns (mismas que en crear.php)
+// Definir las opciones para los dropdowns 
 $categorias = [
     'ESCRITURA Y DIBUJO', 'MATERIAL ARTÍSTICO', 'PAPELERÍA BÁSICA', 
     'OFICINA Y ORGANIZACIÓN', 'MANUALIDADES', 'MATERIAL EDUCATIVO',

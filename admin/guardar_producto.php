@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 
 include '../conexion_bd.php';
 
-// 1) Datos del form
+//  Datos del form
 $nombre        = trim($_POST['nombre'] ?? '');
 $descripcion   = trim($_POST['descripcion'] ?? '');
 $precio        = (float)($_POST['precio'] ?? 0);
@@ -23,7 +23,7 @@ if (!isset($_FILES['imagen']) || $_FILES['imagen']['error'] !== UPLOAD_ERR_OK) {
   die('Error al recibir la imagen.');
 }
 
-// 2) Normalizar carpetas
+//  Normalizar carpetas
 function toFolderName($str) {
   return ucfirst(strtolower(trim($str)));
 }
@@ -37,14 +37,14 @@ if ($tipoFolder !== '') {
   $destDir .= '/' . $tipoFolder;
 }
 
-// 3) Crear carpetas si no existen
+//  Crear carpetas si no existen
 if (!is_dir($destDir)) {
   if (!mkdir($destDir, 0775, true)) {
     die('No pude crear la carpeta de destino: ' . htmlspecialchars($destDir));
   }
 }
 
-// 4) Validar tipo y tamaño de imagen
+//  Validar tipo y tamaño de imagen
 $permitidos = ['image/jpeg','image/png','image/webp','image/gif'];
 $mime = mime_content_type($_FILES['imagen']['tmp_name']);
 if (!in_array($mime, $permitidos, true)) {
@@ -55,23 +55,23 @@ if ($_FILES['imagen']['size'] > $maxBytes) {
   die('La imagen supera los 5 MB.');
 }
 
-// 5) Nombre seguro
+//  Nombre seguro
 $origName = basename($_FILES['imagen']['name']);
 $seguro   = preg_replace('/[^a-zA-Z0-9\.\-_]/', '_', $origName);
 $unico    = time() . '-' . $seguro; 
 $destPath = $destDir . '/' . $unico;
 
-// 6) Si no existe → mover el archivo
+//  Si no existe → mover el archivo
 if (!file_exists($destPath)) {
   if (!move_uploaded_file($_FILES['imagen']['tmp_name'], $destPath)) {
     die('No pude mover la imagen al destino.');
   }
 }
 
-// 7) Ruta relativa para guardar en BD
+//  Ruta relativa para guardar en BD
 $relPath = 'img/' . $catFolder . '/' . $subcatFolder . ($tipoFolder !== '' ? '/'.$tipoFolder : '') . '/' . $unico;
 
-// 8) Insertar en BD
+//  Insertar en BD
 $cantidad = (int)($_POST['cantidad'] ?? 0);
 
 $stmt = $conexion->prepare(

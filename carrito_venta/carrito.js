@@ -58,7 +58,7 @@ function cargarCarrito() {
     </div>
 `).join('');
 
-// 🔹 Mostrar el stock actual de cada producto
+//  Mostrar el stock actual de cada producto
 carrito.forEach(async (producto) => {
     try {
         const response = await fetch(`../admin/obtener_stock.php?id=${producto.id}`);

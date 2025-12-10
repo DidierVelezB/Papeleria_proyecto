@@ -27,7 +27,7 @@ if ($resultado && $resultado->num_rows > 0) {
         echo "</pre>";
     }
 } else {
-    echo "⚠️ No hay productos en la tabla.";
+    echo " No hay productos en la tabla.";
 }
 ?>
 

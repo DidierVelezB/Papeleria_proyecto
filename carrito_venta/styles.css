@@ -213,7 +213,7 @@ h1 {
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     border: 1px solid #eee;
-    min-height: 180px; /* Aseguramos espacio suficiente */
+    min-height: 180px; 
 }
 
 .miniaturas {
@@ -239,8 +239,8 @@ h1 {
 
 .miniatura {
     flex: 0 0 auto;
-    width: 150px; /* Aumentado de 120px a 150px */
-    height: 150px; /* Aumentado de 120px a 150px */
+    width: 150px; 
+    height: 150px; 
     border: 2px solid #ddd;
     border-radius: 18px;
     background-color: #f5f5f5;

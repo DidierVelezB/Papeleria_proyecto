@@ -27,7 +27,7 @@ document.querySelectorAll('.filtros-menu button').forEach(boton => {
   });
 });
 
-// Estilos para animaciones y botón activo
+
 const style = document.createElement('style');
 style.textContent = `
   @keyframes aparecer {

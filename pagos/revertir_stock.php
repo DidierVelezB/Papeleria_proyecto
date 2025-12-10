@@ -17,12 +17,12 @@ foreach ($productos as $p) {
     $cantidad = intval($p['cantidad']);
 
     if ($id > 0 && $cantidad > 0) {
-        // 🔹 Sumar cantidad nuevamente
+        //  Sumar cantidad nuevamente
         $stmt = $conexion->prepare("UPDATE producto SET cantidad = cantidad + ? WHERE id = ?");
         $stmt->bind_param("ii", $cantidad, $id);
         $stmt->execute();
 
-        // 🔹 Reactivar producto si estaba inactivo y vuelve a tener stock
+        //  Reactivar producto si estaba inactivo y vuelve a tener stock
         $conexion->query("UPDATE producto SET activo = 1 WHERE id = $id AND cantidad > 0");
     }
 }

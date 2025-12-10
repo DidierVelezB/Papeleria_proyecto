@@ -31,7 +31,7 @@ session_start();
   </script>
 </head>
 <body style="font-family: Arial; text-align: center; padding: 50px;">
-  <h1>❌ Pago cancelado</h1>
+  <h1> Pago cancelado</h1>
   <p>Tu pago no se completó. Puedes intentarlo nuevamente.</p>
   <a href="../ropa_venta/index.php">Volver a la tienda</a>
 </body>
