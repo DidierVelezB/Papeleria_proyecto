@@ -1,0 +1,519 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 12-12-2025 a las 06:56:00
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.1.25
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `genia`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cliente`
+--
+
+CREATE TABLE `cliente` (
+  `idCliente` int(11) NOT NULL,
+  `correoElectronico` varchar(320) NOT NULL,
+  `contraseña` varchar(300) DEFAULT NULL,
+  `tipo_documento` varchar(10) DEFAULT NULL,
+  `cedula` varchar(20) DEFAULT NULL,
+  `nombre` varchar(100) DEFAULT NULL,
+  `apellidos` varchar(100) DEFAULT NULL,
+  `rol` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `cliente`
+--
+
+INSERT INTO `cliente` (`idCliente`, `correoElectronico`, `contraseña`, `tipo_documento`, `cedula`, `nombre`, `apellidos`, `rol`) VALUES
+(1, 'otalvarodidier@gmail.com', '1234', NULL, NULL, 'didier', NULL, 'cliente'),
+(2, 'carolcarol@gmail.com', '4321', NULL, NULL, 'carol', NULL, 'cliente'),
+(3, 'carmen@gmail.com', '$2y$10$AijvmdGljl/KxsMNmgtaG.fWrcSRXhSdL7YSF6', NULL, NULL, 'carmen', NULL, 'cliente'),
+(4, 'carlosdavir@gmail.com', '$2y$10$t/.ployossPN8z7KJEa9Yuys.OQ15sDt1ds1.x', NULL, NULL, NULL, NULL, 'cliente'),
+(5, 'deivyd@gmail.com', '$2y$10$FTxO/.LAoqVRjjwzpFShZev4ydofDJ5HjuHXYN', NULL, NULL, NULL, NULL, 'cliente'),
+(6, 'stiven@gmail.com', '$2y$10$4hfLcmCB9Qq.qH0RUod8eONqk7AclIcDhwROgU', NULL, NULL, 'stiven', NULL, 'cliente'),
+(7, 'tana@gmail.com', '$2y$10$BHHZTO31tXcwm/81B4b10e3aKza0eruq5y0b/4', NULL, NULL, 'tana', NULL, 'cliente'),
+(8, 'hola@gmail.com', '$2y$10$d61IK0GJrRMhv8nlm6QPeO3cBFaibBHWi6eyCx', NULL, NULL, 'hola', NULL, 'cliente'),
+(9, 'pascal@gmail.com', '$2y$10$3JpOS1iQq5Q/nDpDzZpi7OWTiUe6VjH6mlVMv6OtRKpCUI6WqgFLi', NULL, NULL, 'pascal', NULL, 'cliente'),
+(10, 'romina@gmail.com', '$2y$10$R5t9Disn2Zj9uEYJm6T9Be1TSmyGOGygd5dKBS/Zphms8H3rEejmW', 'cedula', '1000859255', 'romina', 'Romo Leroux', 'administrador'),
+(11, 'patricio@gmail.com', '$2y$10$rrEMXikgMT1OLrCkOMTbyO3Aa32R0vLob4IL5Xqgf56S9ExX9kWdK', NULL, NULL, 'patricio', NULL, 'cliente'),
+(12, 'claudia@gmail.com', '$2y$10$ChubiP9qLg.JbL8SBqhE/.j4i40sstlEi2pkJXQ7BK7Szz5g92Guu', NULL, NULL, 'claudia', NULL, 'cliente'),
+(13, 'dani@gmail.com', '$2y$10$AUR4y1.X9p.SEif.qae40ONS4tmrJ/U0Bw342AGFlLfnrp4JFfQHK', '1111111', NULL, 'Dani', 'Caprapasd1', 'cliente'),
+(14, 'maria@gmail.com', '$2y$10$u0j8/DQU59wrhqX5KSTSR.LDUAzz48O3PbyjT27oRTcP7lMeFOxE6', NULL, NULL, 'Maria', 'patricio', 'cliente'),
+(15, 'prueba2@gmail.com', '$2y$10$XkTqyeBZ0ZrVr7XWj3SBGOv8.N60u3QlspGCnvYSrXWCdc9hRWiTm', 'cedula', '1111111', 'prueba', 'prueba', 'cliente'),
+(16, 'prueba3@gmail.com', '$2y$10$MriwVhwD7IKzYoNLEHPR0Oo.bkAYI3GmYwuFYBlzpsSkrLUEx8VEa', NULL, NULL, 'prueba3', NULL, 'cliente'),
+(17, 'parroco@gmail.com', '$2y$10$R4aqRs7nHqTH5gtQacsCSOV0DzcueQ1ByycKgjaPByioEW/OuarEO', NULL, NULL, 'parroco', NULL, 'cliente'),
+(18, 'profesora@gmail.com', '$2y$10$vuvcd4FWXDbHcPPqTEWv5ujCECEY6ST9a1l//PYlOgjsYye3mzbte', NULL, NULL, 'profesora', NULL, 'cliente'),
+(19, 'guillermo@gmail.com', '$2y$10$H5WOCcj.z3PIwT8lKKdkOe4yryXD1TwcC9T3pZCXdMME/yUWnM6zi', NULL, NULL, 'guillermo', NULL, 'cliente'),
+(20, 'prueba5@gmail.com', '$2y$10$D.u48lLc9k1Byek0lRKcqu5pH.gF0WXcPpJJVTFSDN.9vk4wxJIvy', NULL, NULL, 'prueba5', NULL, 'cliente'),
+(21, 'fargan@gmail.com', '$2y$10$.d.B9ZoTPNCuLm74OEQNH.X4MMIEfthmqglQiJMuNW.NEMAvDoK9q', NULL, NULL, 'fargan', NULL, 'cliente'),
+(22, 'prueba10@gmail.com', '$2y$10$dmtk0Oi.5O3YezrL4dxodepXwhXLs4XJAtKi2/PRET/siPyW1he6a', NULL, NULL, 'prueba10', NULL, 'cliente'),
+(23, 'papeleria@gmail.com', '$2y$10$OulNd7.70yRGRmheJ5P8Tu8Ntuc1Tdu.Ko0txA3GOpE/J3aETEkFW', NULL, NULL, 'papeleria', NULL, '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `codigos_descuento`
+--
+
+CREATE TABLE `codigos_descuento` (
+  `id` int(11) NOT NULL,
+  `codigo` varchar(20) NOT NULL,
+  `porcentaje` decimal(5,2) NOT NULL,
+  `valido_hasta` date DEFAULT NULL,
+  `usos_maximos` int(11) DEFAULT NULL,
+  `usos_actuales` int(11) DEFAULT 0,
+  `activo` tinyint(1) DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `codigos_descuento`
+--
+
+INSERT INTO `codigos_descuento` (`id`, `codigo`, `porcentaje`, `valido_hasta`, `usos_maximos`, `usos_actuales`, `activo`) VALUES
+(11, '1111', 1.00, '2025-05-29', 1, 0, 1),
+(16, 'salario', 12.00, '2025-05-28', 1, 0, 1),
+(17, 'romina', 99.00, '2025-05-27', 4, 0, 1),
+(19, 'oar', 1.00, '2025-05-28', 1, 0, 1),
+(20, '99999', 1.00, '2025-05-28', 4, 0, 1),
+(25, 'rocky', 100.00, '2025-05-29', 1, 1, 1),
+(26, 'GENIA', 10.00, '2025-06-04', 2, 1, 1),
+(27, 'descuento', 80.00, '2025-07-08', 15, 2, 1),
+(29, 'car', 12.00, '2025-07-31', 12312, 0, 1),
+(30, '12312', 12.00, '2025-08-29', 1241, 0, 1),
+(31, 'prueba', 90.00, '2025-09-06', 1, 1, 0),
+(32, 'cas', 50.00, '2025-10-02', 1, 1, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `generadordemensajes`
+--
+
+CREATE TABLE `generadordemensajes` (
+  `idGeneradorDeMensajes` int(11) NOT NULL,
+  `plantillaMensaje` varchar(150) DEFAULT NULL,
+  `Cliente_idCliente` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `historial`
+--
+
+CREATE TABLE `historial` (
+  `id` int(11) NOT NULL,
+  `id_cliente` int(11) NOT NULL,
+  `producto` varchar(255) NOT NULL,
+  `fecha` datetime NOT NULL,
+  `precio` decimal(10,2) NOT NULL,
+  `talla` varchar(20) NOT NULL,
+  `imagen` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `historial`
+--
+
+INSERT INTO `historial` (`id`, `id_cliente`, `producto`, `fecha`, `precio`, `talla`, `imagen`) VALUES
+(295, 10, 'asdasdasda (Unidad, Escolares)', '2025-11-21 16:31:05', 11111.00, '', '../img/Material artístico/Temperas/Escolares/1761604451-1.jpg'),
+(296, 10, 'Romina (Unidad, Escolares)', '2025-11-21 16:31:05', 12000.00, '', '../img/Material artístico/Temperas/Escolares/1761603897-IMG_0785.jpg'),
+(297, 10, 'Lapiz (Unidad, Con tapa)', '2025-11-21 16:31:05', 12000.00, '', '../img/Escritura Y Dibujo/Lápices/Con Tapa/1761603363_1920x1080.jpg'),
+(298, 10, 'car (Paquete x10, Escolares)', '2025-11-21 16:31:05', 1222.00, '', '../img/Material artístico/Temperas/Escolares/1756248991-cuaderno.webp'),
+(299, 10, 'Lapiz (Unidad, Colores)', '2025-11-21 16:31:05', 1200.00, '', '../img/Escritura y dibujo/Lápices/Grafito hb/1756247652-lapiz.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `historialdemensaje`
+--
+
+CREATE TABLE `historialdemensaje` (
+  `idHistorialDeMensaje` int(11) NOT NULL,
+  `mensajeEnviado` varchar(750) NOT NULL,
+  `Cliente_idCliente` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `intereses`
+--
+
+CREATE TABLE `intereses` (
+  `idIntereses` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `intereses`
+--
+
+INSERT INTO `intereses` (`idIntereses`, `nombre`) VALUES
+(1, 'Ropa');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `intereses_has_cliente`
+--
+
+CREATE TABLE `intereses_has_cliente` (
+  `Intereses_idIntereses` int(11) NOT NULL,
+  `Cliente_idCliente` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `notificador`
+--
+
+CREATE TABLE `notificador` (
+  `idNotificador` int(11) NOT NULL,
+  `Cliente_idCliente` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pedidos`
+--
+
+CREATE TABLE `pedidos` (
+  `id` int(11) NOT NULL,
+  `id_usuario` int(11) DEFAULT NULL,
+  `total` int(11) NOT NULL,
+  `moneda` varchar(10) DEFAULT 'cop',
+  `estado` varchar(20) DEFAULT 'pendiente',
+  `stripe_session_id` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `producto`
+--
+
+CREATE TABLE `producto` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `descripcion` text DEFAULT NULL,
+  `precio` decimal(10,2) NOT NULL,
+  `categoria` varchar(50) DEFAULT NULL,
+  `subcategoria` varchar(100) DEFAULT NULL,
+  `tipo` varchar(100) DEFAULT NULL,
+  `marca` varchar(100) DEFAULT NULL,
+  `presentacion` varchar(50) DEFAULT NULL,
+  `imagen` varchar(255) DEFAULT NULL,
+  `cantidad` int(11) NOT NULL DEFAULT 0,
+  `activo` tinyint(1) DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `producto`
+--
+
+INSERT INTO `producto` (`id`, `nombre`, `descripcion`, `precio`, `categoria`, `subcategoria`, `tipo`, `marca`, `presentacion`, `imagen`, `cantidad`, `activo`) VALUES
+(15, 'Lapiz', 'lapiz', 1200.00, 'ESCRITURA Y DIBUJO', 'Lápices', 'Colores', 'Faber Castell', 'Unidad', 'img/Escritura y dibujo/Lápices/Grafito hb/1756247652-lapiz.jpg', 2, 1),
+(16, 'car', 'caar', 1222.00, 'MATERIAL ARTÍSTICO', 'Temperas', 'Escolares', 'Payasito', 'Paquete x10', 'img/Material artístico/Temperas/Escolares/1756248991-cuaderno.webp', 9, 1),
+(17, 'tijera', 'tijera profesional', 12000.00, 'MANUALIDADES', 'Cartulinas', 'Profesionales', 'Parchesitos', 'Unidad', 'img/Manualidades/Tijeras/Profesionales/1756339987-tijera.jpg', 0, 0),
+(18, 'Lapiz', 'lapiz', 12000.00, 'ESCRITURA Y DIBUJO', 'Lápices', 'Con tapa', 'Faber Castell', 'Unidad', 'img/Escritura Y Dibujo/Lápices/Con Tapa/1761603363_1920x1080.jpg', 0, 0),
+(21, 'Romina', 'Romina_1_2_3', 12000.00, 'Material Artístico', 'Temperas', 'Escolares', 'Parchesitos', 'Unidad', 'img/Material artístico/Temperas/Escolares/1761603897-IMG_0785.jpg', 77, 1),
+(22, 'asdasdasda', '123123213', 11111.00, 'MATERIAL ARTÍSTICO', 'Temperas', 'Escolares', 'Payasito', 'Unidad', 'img/Material artístico/Temperas/Escolares/1761604451-1.jpg', 27, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `productos`
+--
+
+CREATE TABLE `productos` (
+  `idProductos` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `descripcion` varchar(320) NOT NULL,
+  `categoria` varchar(200) NOT NULL,
+  `Intereses_idIntereses` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `reportes`
+--
+
+CREATE TABLE `reportes` (
+  `idReporte` int(11) NOT NULL,
+  `nombres` varchar(100) NOT NULL,
+  `apellidos` varchar(100) NOT NULL,
+  `documento` varchar(50) NOT NULL,
+  `fecha` date NOT NULL,
+  `reporte` text NOT NULL,
+  `usuario_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `reportes`
+--
+
+INSERT INTO `reportes` (`idReporte`, `nombres`, `apellidos`, `documento`, `fecha`, `reporte`, `usuario_id`) VALUES
+(1, 'Didier', 'Otalvaro', '1000859255', '2025-05-29', 'Funciona excelente', 19),
+(2, 'Prueba10', 'Prueba10', '111111111111', '2025-06-03', 'Me llego 2 días tarde', 22),
+(3, 'Romina', 'Romo Leroux', '1000859255', '2025-08-27', 'Romina nunca ha amado a Didier, por que lo odia desde que le vio la cara', 10),
+(4, 'Romina', 'Romo-Leroux', '10101010100101', '2025-11-21', 'Me gusta', 10);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `repositoriocliente`
+--
+
+CREATE TABLE `repositoriocliente` (
+  `idRepositorioCliente` int(11) NOT NULL,
+  `Cliente_idCliente` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `cliente`
+--
+ALTER TABLE `cliente`
+  ADD PRIMARY KEY (`idCliente`);
+
+--
+-- Indices de la tabla `codigos_descuento`
+--
+ALTER TABLE `codigos_descuento`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `codigo` (`codigo`);
+
+--
+-- Indices de la tabla `generadordemensajes`
+--
+ALTER TABLE `generadordemensajes`
+  ADD PRIMARY KEY (`idGeneradorDeMensajes`),
+  ADD KEY `fk_GeneradorDeMensajes_Cliente_idx` (`Cliente_idCliente`);
+
+--
+-- Indices de la tabla `historial`
+--
+ALTER TABLE `historial`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_cliente` (`id_cliente`);
+
+--
+-- Indices de la tabla `historialdemensaje`
+--
+ALTER TABLE `historialdemensaje`
+  ADD PRIMARY KEY (`idHistorialDeMensaje`),
+  ADD KEY `fk_HistorialDeMensaje_Cliente1_idx` (`Cliente_idCliente`);
+
+--
+-- Indices de la tabla `intereses`
+--
+ALTER TABLE `intereses`
+  ADD PRIMARY KEY (`idIntereses`);
+
+--
+-- Indices de la tabla `intereses_has_cliente`
+--
+ALTER TABLE `intereses_has_cliente`
+  ADD PRIMARY KEY (`Intereses_idIntereses`,`Cliente_idCliente`),
+  ADD KEY `fk_Intereses_has_Cliente_Cliente1_idx` (`Cliente_idCliente`),
+  ADD KEY `fk_Intereses_has_Cliente_Intereses1_idx` (`Intereses_idIntereses`);
+
+--
+-- Indices de la tabla `notificador`
+--
+ALTER TABLE `notificador`
+  ADD PRIMARY KEY (`idNotificador`,`Cliente_idCliente`),
+  ADD KEY `fk_Notificador_Cliente1_idx` (`Cliente_idCliente`);
+
+--
+-- Indices de la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `producto`
+--
+ALTER TABLE `producto`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD PRIMARY KEY (`idProductos`),
+  ADD KEY `fk_Productos_Intereses1_idx` (`Intereses_idIntereses`);
+
+--
+-- Indices de la tabla `reportes`
+--
+ALTER TABLE `reportes`
+  ADD PRIMARY KEY (`idReporte`),
+  ADD KEY `usuario_id` (`usuario_id`);
+
+--
+-- Indices de la tabla `repositoriocliente`
+--
+ALTER TABLE `repositoriocliente`
+  ADD PRIMARY KEY (`idRepositorioCliente`,`Cliente_idCliente`),
+  ADD KEY `fk_RepositorioCliente_Cliente1_idx` (`Cliente_idCliente`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `cliente`
+--
+ALTER TABLE `cliente`
+  MODIFY `idCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT de la tabla `codigos_descuento`
+--
+ALTER TABLE `codigos_descuento`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+--
+-- AUTO_INCREMENT de la tabla `generadordemensajes`
+--
+ALTER TABLE `generadordemensajes`
+  MODIFY `idGeneradorDeMensajes` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `historial`
+--
+ALTER TABLE `historial`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=300;
+
+--
+-- AUTO_INCREMENT de la tabla `historialdemensaje`
+--
+ALTER TABLE `historialdemensaje`
+  MODIFY `idHistorialDeMensaje` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `intereses`
+--
+ALTER TABLE `intereses`
+  MODIFY `idIntereses` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `notificador`
+--
+ALTER TABLE `notificador`
+  MODIFY `idNotificador` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `producto`
+--
+ALTER TABLE `producto`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT de la tabla `productos`
+--
+ALTER TABLE `productos`
+  MODIFY `idProductos` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `reportes`
+--
+ALTER TABLE `reportes`
+  MODIFY `idReporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `repositoriocliente`
+--
+ALTER TABLE `repositoriocliente`
+  MODIFY `idRepositorioCliente` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `generadordemensajes`
+--
+ALTER TABLE `generadordemensajes`
+  ADD CONSTRAINT `fk_GeneradorDeMensajes_Cliente` FOREIGN KEY (`Cliente_idCliente`) REFERENCES `cliente` (`idCliente`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `historial`
+--
+ALTER TABLE `historial`
+  ADD CONSTRAINT `historial_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`idCliente`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `historialdemensaje`
+--
+ALTER TABLE `historialdemensaje`
+  ADD CONSTRAINT `fk_HistorialDeMensaje_Cliente1` FOREIGN KEY (`Cliente_idCliente`) REFERENCES `cliente` (`idCliente`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `intereses_has_cliente`
+--
+ALTER TABLE `intereses_has_cliente`
+  ADD CONSTRAINT `fk_Intereses_has_Cliente_Cliente1` FOREIGN KEY (`Cliente_idCliente`) REFERENCES `cliente` (`idCliente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Intereses_has_Cliente_Intereses1` FOREIGN KEY (`Intereses_idIntereses`) REFERENCES `intereses` (`idIntereses`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `notificador`
+--
+ALTER TABLE `notificador`
+  ADD CONSTRAINT `fk_Notificador_Cliente1` FOREIGN KEY (`Cliente_idCliente`) REFERENCES `cliente` (`idCliente`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD CONSTRAINT `fk_Productos_Intereses1` FOREIGN KEY (`Intereses_idIntereses`) REFERENCES `intereses` (`idIntereses`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `reportes`
+--
+ALTER TABLE `reportes`
+  ADD CONSTRAINT `reportes_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `cliente` (`idCliente`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `repositoriocliente`
+--
+ALTER TABLE `repositoriocliente`
+  ADD CONSTRAINT `fk_RepositorioCliente_Cliente1` FOREIGN KEY (`Cliente_idCliente`) REFERENCES `cliente` (`idCliente`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
